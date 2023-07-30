@@ -2,8 +2,8 @@ const btnCloseModal = document.querySelector(`.modal__close`);
 const modal = document.querySelector(`.modal`);
 
 window.addEventListener(`load`, () => {
-  if (getCookie(`modal`) === `closet`) {
-    modal.classList.remove(`modal_active`);
+  if (getCookie(`modal`) !== `closet`) {
+    modal.classList.add(`modal_active`);
   }
 })
 

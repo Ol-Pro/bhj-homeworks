@@ -1,26 +1,25 @@
+//const btnCloseModal = document.querySelector(`.modal__close`);
+//const modal = document.querySelector(`.modal`);
+//window.addEventListener(`load`, () => {  if (getCookie(`modal`) !== `closet`) {    modal.classList.add(`modal_active`);  }})
+//btnCloseModal.addEventListener(`click`, () => {  modal.classList.remove(`modal_active`);  setCookie('modal', `closet`);  })
+//function setCookie(name, value) {  document.cookie = name + '=' + value;}
+//function getCookie(name) {  const value = `; ${document.cookie} `;  let parts = value.split(`; ${name}=`);  if (parts.length === 2) {    return parts.pop();  }}
+
+
 const btnCloseModal = document.querySelector(`.modal__close`);
-const modal = document.querySelector(`.modal`);
+const modal = document.getElementById(`subscribe-modal`);
 
-window.addEventListener(`load`, () => {
-  if (getCookie(`modal`) !== `closet`) {
-    modal.classList.add(`modal_active`);
-  }
-})
-
+// отметка в localStorage
 btnCloseModal.addEventListener(`click`, () => {
-  modal.classList.remove(`modal_active`);
-  setCookie('modal', `closet`);
-  
+    modal.classList.remove(`modal_active`);
+    localStorage.btnCloseModal = `true`;
 })
 
-function setCookie(name, value) {
-  document.cookie = name + '=' + value;
-}
-
-function getCookie(name) {
-  const value = `; ${document.cookie} `;
-  let parts = value.split(`; ${name}=`);
-  if (parts.length === 2) {
-    return parts.pop();
-  }
+//если в localStorage нет отметки о закрытии, то показываем окно
+window.onload = () => {
+    if (localStorage.btnCloseModal == `true`) {
+        return;
+    }   else {
+        modal.classList.add(`modal_active`);
+    }
 }
